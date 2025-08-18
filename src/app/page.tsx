@@ -152,9 +152,9 @@ export default function Home() {
             {/* 고객 편의 섹션 */}
             <section className="mx-auto max-w-4xl px-6 py-16">
                 <div className="flex flex-col items-center text-center space-y-6">
-                    <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
                         부담없이 전화주세요
-                    </h3>
+                    </h2>
                     <p className="text-lg text-gray-200">
                         전화주시면 한분 한분 <span className="text-pink-400 font-semibold">스타일 미팅</span> 후
                         <span className="text-cyan-300 font-semibold"> 즉시 배정</span>까지 친절 상담 드립니다. ^^
@@ -199,7 +199,7 @@ export default function Home() {
             </section>
 
             {/* 개인정보보호 및 주의 섹션 */}
-            <section className="mx-auto max-w-4xl px-6 py-16">
+            <section className="mx-auto max-w-3xl px-6 py-16">
                 {/* 헤더 */}
                 <div className="flex flex-col items-center text-center space-y-3">
                     <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
@@ -210,7 +210,7 @@ export default function Home() {
                 {/* 본문 카드 */}
                 <div className="mt-8 space-y-6">
                     {/* 정보 보호 박스 */}
-                    <div className="rounded-2xl bg-white/[0.04] p-6 ring-1 ring-white/10">
+                    <div className="rounded-2xl bg-white/[0.04] p-6 ring-1 ring-white/10 text-sm sm:text-base md:text-lg">
                         <div className="flex items-start gap-3">
                             <ShieldIcon className="mt-1 !h-6 !w-6 shrink-0 text-cyan-300" />
                             <p className="text-gray-200 leading-relaxed">
@@ -224,17 +224,17 @@ export default function Home() {
                     </div>
 
                     {/* 주의 박스 */}
-                    <div className="rounded-2xl bg-red-500/5 p-6 ring-1 ring-red-400/30">
+                    <div className="rounded-2xl bg-red-500/5 p-6 ring-1 ring-red-400/30 text-sm sm:text-base md:text-lg">
                         <div className="flex items-start gap-3">
                             <AlertIcon className="mt-1 !h-5 !w-5 shrink-0 text-red-400" />
-                            <div className="space-y-2 text-sm text-gray-200">
+                            <div className="space-y-2 text-gray-200">
                                 <p className="font-semibold text-red-300">
                                     아래 사항을 꼭 확인하세요
                                 </p>
                                 <ul className="list-disc pl-5 space-y-2">
                                     <li>
                                         <span className="font-semibold text-white">예약금/보증금 요구</span> 시, 사기업체일 가능성이 높습니다.
-                                        썸출장안마 &amp; 썸출장마사지는 <span className="text-cyan-300 font-semibold">관리사 도착 후 결제(후불제)</span>입니다.
+                                        썸출장안마 &amp; 썸출장마사지는 <span className="text-yellow-300 font-semibold">관리사 도착 후 결제(후불제)</span>입니다.
                                     </li>
                                     <li>
                                         관리사 이미지를 제공한다며 <span className="font-semibold text-white">무단 도용 사진</span>을 사용하는 곳에 유의하세요.
