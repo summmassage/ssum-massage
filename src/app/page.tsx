@@ -198,7 +198,7 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* 개인정보 보호 섹션 */}
+            {/* 개인정보보호 및 주의 섹션 */}
             <section className="mx-auto max-w-4xl px-6 py-16">
                 {/* 헤더 */}
                 <div className="flex flex-col items-center text-center space-y-3">
@@ -209,20 +209,24 @@ export default function Home() {
 
                 {/* 본문 카드 */}
                 <div className="mt-8 space-y-6">
+                    {/* 정보 보호 박스 */}
                     <div className="rounded-2xl bg-white/[0.04] p-6 ring-1 ring-white/10">
-                        <p className="text-gray-200 leading-relaxed">
-                            썸출장안마 &amp; 썸출장마사지는 문의/예약 전화를 이용하신 고객님의 DB를
-                            <span className="font-semibold text-white"> 철저히 보호</span>합니다. 어떠한 광고 문자·전화를
-                            보내지 않으며, 고객님께서 먼저 연락 주시기 전까지
-                            <span className="font-semibold text-white"> 절대</span> 먼저 연락드리는 일은 없습니다.
-                            사칭 업체에 유의해 주세요.
-                        </p>
+                        <div className="flex items-start gap-3">
+                            <ShieldIcon className="mt-1 !h-6 !w-6 shrink-0 text-cyan-300" />
+                            <p className="text-gray-200 leading-relaxed">
+                                썸출장안마 &amp; 썸출장마사지는 문의/예약 전화를 이용하신 고객님의 DB를
+                                <span className="font-semibold text-white"> 철저히 보호</span>합니다. 어떠한 광고 문자·전화를
+                                보내지 않으며, 고객님께서 먼저 연락 주시기 전까지
+                                <span className="font-semibold text-white"> 절대</span> 먼저 연락드리는 일은 없습니다.
+                                사칭 업체에 유의해 주세요.
+                            </p>
+                        </div>
                     </div>
 
-                    {/* 경고 박스 */}
+                    {/* 주의 박스 */}
                     <div className="rounded-2xl bg-red-500/5 p-6 ring-1 ring-red-400/30">
                         <div className="flex items-start gap-3">
-                            <AlertIcon className="mt-1 h-5 w-5 text-red-400" />
+                            <AlertIcon className="mt-1 !h-5 !w-5 shrink-0 text-red-400" />
                             <div className="space-y-2 text-sm text-gray-200">
                                 <p className="font-semibold text-red-300">
                                     아래 사항을 꼭 확인하세요
