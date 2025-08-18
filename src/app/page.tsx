@@ -1,5 +1,7 @@
 import FadeUpWrapper from "@/component/fadeUpWrapper";
 import Image from "next/image";
+import {ShieldIcon} from "@/component/shieldIcon";
+import {AlertIcon} from "@/component/alertIcon";
 
 export default function Home() {
     return (
@@ -148,41 +150,95 @@ export default function Home() {
             </section>
 
             {/* 고객 편의 섹션 */}
-            <section className="mx-auto max-w-4xl px-6 py-10 space-y-8">
-                <div>
-                    <p>
-                        전화주시면 한분 한분 스타일 미팅 후 배정까지 친절상담 드리겠습니다 ^^
+            <section className="mx-auto max-w-4xl px-6 py-16">
+                <div className="flex flex-col items-center text-center space-y-6">
+                    <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+                        부담없이 전화주세요
+                    </h3>
+                    <p className="text-lg text-gray-200">
+                        전화주시면 한분 한분 <span className="text-pink-400 font-semibold">스타일 미팅</span> 후
+                        <span className="text-cyan-300 font-semibold"> 즉시 배정</span>까지 친절 상담 드립니다. ^^
                     </p>
-                </div>
 
-                <div>
-                    <p>서울/경기/인천 전지역 총알 방문!</p>
-                    <p>자택 및 다양한 숙박업소로 방문합니다.</p>
-                    <p>
-                        1인, 2인, 3인, 4인 등 다인원 출장도 가능합니다.
-                        <span className="text-sm text-gray-400 block mt-1">
-                          (다인원 출장 시 1인 1배정이며 자택일 경우 따로 방이 나뉘어져
-                          있어야 하며 숙박업소일 시 따로 방이 있으셔야 합니다.)
+                    {/* 포인트 칩 */}
+                    <div className="flex flex-wrap justify-center gap-2">
+                        <span className="rounded-xl bg-white/5 px-3 py-1 text-sm text-gray-200 ring-1 ring-white/10">
+                            서울/경기/인천 전지역 총알 방문
                         </span>
-                    </p>
+                        <span className="rounded-xl bg-white/5 px-3 py-1 text-sm text-gray-200 ring-1 ring-white/10">
+                            자택 및 다양한 숙박업소 방문
+                        </span>
+                        <span className="rounded-xl bg-white/5 px-3 py-1 text-sm text-gray-200 ring-1 ring-white/10">
+                            1인 · 2인 · 3인 · 4인 다인원 가능
+                        </span>
+                    </div>
+
+                    {/* 안내 문구 */}
+                    <div className="pt-8 flex flex-col gap-6 max-w-2xl mx-auto w-full">
+                        <div className="rounded-2xl bg-white/5 p-6 ring-1 ring-white/10 leading-relaxed text-gray-300 space-y-3">
+                            <p>
+                                다인원 출장 시 <span className="font-semibold text-white">1인 1배정</span>입니다.
+                            </p>
+                            <p>
+                                자택일 경우 <span className="font-semibold text-white">방이 분리</span>되어야 하고,
+                                숙박업소는 <span className="font-semibold text-white">각각의 객실</span>이 필요합니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* CTA 버튼 */}
+                    <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+                        <a
+                            href="tel:010-0000-0000" // TODO: 실제 번호로 교체
+                            className="rounded-xl bg-cyan-500 px-10 py-6 font-semibold text-black hover:bg-cyan-400 transition"
+                        >
+                            전화 상담하기
+                        </a>
+                    </div>
                 </div>
             </section>
 
             {/* 개인정보 보호 섹션 */}
-            <section className="mx-auto max-w-4xl px-6 py-10 space-y-8">
-                <div>
-                    <p className="font-semibold">*안심 DB 번호*</p>
-                    <p className="text-sm text-gray-400 mt-2">
-                        썸출장안마 &amp; 썸출장마사지는 문의 전화 예약전화 등 이용하셨던
-                        분들의 DB를 절대적으로 보호하며 어떠한 광고 문자·전화 등을 드리지
-                        않으며 먼저 연락 주시기 전까지 <b>절대 먼저 연락드리는 일 없습니다.</b>{" "}
-                        저희를 사칭하는 업체에 유의하세요.
-                    </p>
+            <section className="mx-auto max-w-4xl px-6 py-16">
+                {/* 헤더 */}
+                <div className="flex flex-col items-center text-center space-y-3">
+                    <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
+                        안심 DB 번호 — 먼저 연락드리는 일은 <span className="text-red-400">절대 없습니다</span>
+                    </h3>
                 </div>
 
-                <div className="space-y-2 text-sm text-gray-400">
-                    <p> * 예약금 및 보증금을 요구하는 일부 사기업체에 유의하세요 썸출장안마 &amp; 썸출장마사지는 관리사 도착 후 결제입니다. </p>
-                    <p> * 관리사들의 이미지를 제공한다며 무단도용된 사진을 쓰는 곳은 사기업체일 가능성이 높습니다. 사기업체에 유의하세요 </p>
+                {/* 본문 카드 */}
+                <div className="mt-8 space-y-6">
+                    <div className="rounded-2xl bg-white/[0.04] p-6 ring-1 ring-white/10">
+                        <p className="text-gray-200 leading-relaxed">
+                            썸출장안마 &amp; 썸출장마사지는 문의/예약 전화를 이용하신 고객님의 DB를
+                            <span className="font-semibold text-white"> 철저히 보호</span>합니다. 어떠한 광고 문자·전화를
+                            보내지 않으며, 고객님께서 먼저 연락 주시기 전까지
+                            <span className="font-semibold text-white"> 절대</span> 먼저 연락드리는 일은 없습니다.
+                            사칭 업체에 유의해 주세요.
+                        </p>
+                    </div>
+
+                    {/* 경고 박스 */}
+                    <div className="rounded-2xl bg-red-500/5 p-6 ring-1 ring-red-400/30">
+                        <div className="flex items-start gap-3">
+                            <AlertIcon className="mt-1 h-5 w-5 text-red-400" />
+                            <div className="space-y-2 text-sm text-gray-200">
+                                <p className="font-semibold text-red-300">
+                                    아래 사항을 꼭 확인하세요
+                                </p>
+                                <ul className="list-disc pl-5 space-y-2">
+                                    <li>
+                                        <span className="font-semibold text-white">예약금/보증금 요구</span> 시, 사기업체일 가능성이 높습니다.
+                                        썸출장안마 &amp; 썸출장마사지는 <span className="text-cyan-300 font-semibold">관리사 도착 후 결제(후불제)</span>입니다.
+                                    </li>
+                                    <li>
+                                        관리사 이미지를 제공한다며 <span className="font-semibold text-white">무단 도용 사진</span>을 사용하는 곳에 유의하세요.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
