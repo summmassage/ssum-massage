@@ -26,45 +26,51 @@ export default function Home() {
 
                     {/* 어트랙션 */}
                     <div className="flex flex-col space-y-8">
-                        {/* 거리 문구 */}
-                        <div className="flex flex-col space-y-3">
-                            <p className="text-2xl sm:text-4xl font-bold text-white">
-                                서울 · 경기 · 인천{" "}
-                                <span className="text-cyan-300">30분 내 도착</span>
-                            </p>
-                            <p className="text-base sm:text-lg text-gray-400">
-                                * 경기 외곽지역 및 피크시간에는 조금 더 시간이 소요될 수 있습니다.
-                            </p>
-                        </div>
-
-                        {/* 24시간 운영 문구 */}
-                        <div>
-                            <p className="text-2xl sm:text-4xl font-bold text-white">
-                                365일 <span className="text-cyan-300">24시간 운영!</span> 언제든 예약가능
-                            </p>
-                        </div>
-
-                        {/* 결제 수단 문구 */}
-                        <div className="flex flex-col space-y-2">
-                            <p className="text-2xl sm:text-4xl font-bold text-white">
-                                현금 · 계좌이체 · 카드결제 가능
-                            </p>
-                            <p className="text-base sm:text-lg text-gray-400">
-                                * 카드결제는 부가세 10% 발생합니다
-                            </p>
-                        </div>
+                        <FadeUpWrapper delay={50}>
+                            {/* 거리 문구 */}
+                            <div className="flex flex-col space-y-3">
+                                <p className="text-2xl sm:text-4xl font-bold text-white">
+                                    서울 · 경기 · 인천{" "}
+                                    <span className="text-cyan-300">30분 내 도착</span>
+                                </p>
+                                <p className="text-base sm:text-lg text-gray-400">
+                                    * 경기 외곽지역 및 피크시간에는 조금 더 시간이 소요될 수 있습니다.
+                                </p>
+                            </div>
+                        </FadeUpWrapper>
+                        <FadeUpWrapper delay={100}>
+                            {/* 24시간 운영 문구 */}
+                            <div>
+                                <p className="text-2xl sm:text-4xl font-bold text-white">
+                                    365일 <span className="text-cyan-300">24시간 운영!</span> 언제든 예약가능
+                                </p>
+                            </div>
+                        </FadeUpWrapper>
+                        <FadeUpWrapper delay={150}>
+                            {/* 결제 수단 문구 */}
+                            <div className="flex flex-col space-y-2">
+                                <p className="text-2xl sm:text-4xl font-bold text-white">
+                                    현금 · 계좌이체 · 카드결제 가능
+                                </p>
+                                <p className="text-base sm:text-lg text-gray-400">
+                                    * 카드결제는 부가세 10% 발생합니다
+                                </p>
+                            </div>
+                        </FadeUpWrapper>
                     </div>
 
                     {/* 인트로 이미지 */}
-                    <div className="flex justify-center">
-                        <Image
-                            src="/image/홈1.png"
-                            alt="홈1"
-                            width={600}
-                            height={400}
-                            className="rounded-2xl shadow-lg shadow-black/40"
-                        />
-                    </div>
+                    <FadeUpWrapper>
+                        <div className="flex justify-center">
+                            <Image
+                                src="/image/홈1.png"
+                                alt="홈1"
+                                width={600}
+                                height={400}
+                                className="rounded-2xl shadow-lg shadow-black/40"
+                            />
+                        </div>
+                    </FadeUpWrapper>
                 </div>
             </section>
 
@@ -152,26 +158,31 @@ export default function Home() {
             {/* 고객 편의 섹션 */}
             <section className="mx-auto max-w-4xl px-6 py-16">
                 <div className="flex flex-col items-center text-center space-y-6">
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
-                        부담없이 전화주세요
-                    </h2>
-                    <p className="text-lg text-gray-200">
-                        전화주시면 한분 한분 <span className="text-pink-400 font-semibold">스타일 미팅</span> 후
-                        <span className="text-cyan-300 font-semibold"> 즉시 배정</span>까지 친절 상담 드립니다. ^^
-                    </p>
-
-                    {/* 포인트 칩 */}
-                    <div className="flex flex-wrap justify-center gap-2">
+                    <FadeUpWrapper>
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">
+                            부담없이 전화주세요
+                        </h2>
+                    </FadeUpWrapper>
+                    <FadeUpWrapper>
+                        <p className="text-lg text-gray-200">
+                            전화주시면 한분 한분 <span className="text-pink-400 font-semibold">스타일 미팅</span> 후
+                            <span className="text-cyan-300 font-semibold"> 즉시 배정</span>까지 친절 상담 드립니다. ^^
+                        </p>
+                    </FadeUpWrapper>
+                    <FadeUpWrapper>
+                        {/* 포인트 칩 */}
+                        <div className="flex flex-wrap justify-center gap-2">
                         <span className="rounded-xl bg-white/5 px-3 py-1 text-sm text-gray-200 ring-1 ring-white/10">
                             서울/경기/인천 전지역 총알 방문
                         </span>
-                        <span className="rounded-xl bg-white/5 px-3 py-1 text-sm text-gray-200 ring-1 ring-white/10">
+                            <span className="rounded-xl bg-white/5 px-3 py-1 text-sm text-gray-200 ring-1 ring-white/10">
                             자택 및 다양한 숙박업소 방문
                         </span>
-                        <span className="rounded-xl bg-white/5 px-3 py-1 text-sm text-gray-200 ring-1 ring-white/10">
+                            <span className="rounded-xl bg-white/5 px-3 py-1 text-sm text-gray-200 ring-1 ring-white/10">
                             1인 · 2인 · 3인 · 4인 다인원 가능
                         </span>
-                    </div>
+                        </div>
+                    </FadeUpWrapper>
 
                     {/* 안내 문구 */}
                     <div className="pt-8 flex flex-col gap-6 max-w-2xl mx-auto w-full">
