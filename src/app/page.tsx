@@ -62,17 +62,15 @@ export default function Home() {
                     </div>
 
                     {/* 인트로 이미지 */}
-                    <FadeUpWrapper>
-                        <div className="flex justify-center">
-                            <Image
-                                src="/image/썸출장마사지_안내.png"
-                                alt="썸출장마사지_안내"
-                                width={600}
-                                height={400}
-                                className="rounded-2xl shadow-lg shadow-black/40"
-                            />
-                        </div>
-                    </FadeUpWrapper>
+                    <div className="flex justify-center">
+                        <Image
+                            src="/image/썸출장마사지_안내.png"
+                            alt="썸출장마사지_안내"
+                            width={600}
+                            height={400}
+                            className="rounded-2xl shadow-lg shadow-black/40"
+                        />
+                    </div>
 
                     <CourseLinkButton />
                 </div>
@@ -130,16 +128,14 @@ export default function Home() {
 
                 {/* 이미지 */}
                 <div className="flex justify-center">
-                    <FadeUpWrapper>
-                        <Image
-                            src="/image/썸출장마사지_차별화.png"
-                            alt="썸출장마사지_차별화"
-                            width={600}
-                            height={400}
-                            className="object-cover rounded-lg"
-                            priority
-                        />
-                    </FadeUpWrapper>
+                    <Image
+                        src="/image/썸출장마사지_차별화.png"
+                        alt="썸출장마사지_차별화"
+                        width={600}
+                        height={400}
+                        className="object-cover rounded-lg"
+                        priority
+                    />
                 </div>
 
                 {/* 신뢰 / 운영 안내 */}

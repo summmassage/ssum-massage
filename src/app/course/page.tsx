@@ -63,9 +63,6 @@ export default function CoursePage() {
                                 <span className="text-pink-400">SSUM</span> 코스 & 가격
                             </h1>
                         </FadeUpWrapper>
-
-                        {/* 오른쪽 버튼 */}
-                        <HomeLinkButton />
                     </div>
 
                     <FadeUpWrapper delay={80}>
