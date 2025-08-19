@@ -1,4 +1,3 @@
-// app/course/page.tsx
 import FadeUpWrapper from "@/component/fadeUpWrapper";
 import Link from "next/link";
 import PhoneCallButton from "@/component/phonecallButton";
