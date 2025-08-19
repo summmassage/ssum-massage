@@ -63,8 +63,8 @@ export default function Home() {
                     <FadeUpWrapper>
                         <div className="flex justify-center">
                             <Image
-                                src="/image/홈1.png"
-                                alt="홈1"
+                                src="/image/썸출장마사지_안내.png"
+                                alt="썸출장마사지_안내"
                                 width={600}
                                 height={400}
                                 className="rounded-2xl shadow-lg shadow-black/40"
@@ -127,8 +127,8 @@ export default function Home() {
                 <div className="flex justify-center">
                     <FadeUpWrapper>
                         <Image
-                            src="/image/홈2.png"
-                            alt="홈2"
+                            src="/image/썸출장마사지_차별화.png"
+                            alt="썸출장마사지_차별화"
                             width={600}
                             height={400}
                             className="object-cover rounded-lg"
@@ -257,7 +257,21 @@ export default function Home() {
                 </div>
             </section>
 
-            <footer className="mx-auto max-w-6xl px-6 pb-12 text-center text-sm text-gray-400">
+            {/* 약속 이미지 */}
+            <section className="mx-auto max-w-3xl px-6 py-8">
+                <div className="flex justify-center">
+                    <Image
+                        src="/image/썸출장마사지_약속.png"
+                        alt="썸출장마사지_약속"
+                        width={600}
+                        height={400}
+                        className="object-cover rounded-lg"
+                        priority
+                    />
+                </div>
+            </section>
+
+            <footer className="mx-auto max-w-6xl px-6 py-12 text-center text-sm text-gray-400">
                 © {new Date().getFullYear()} 썸출장안마 &amp; 썸출장마사지. All rights
                 reserved.
             </footer>
