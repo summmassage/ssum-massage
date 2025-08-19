@@ -20,7 +20,7 @@ export default function FadeUpWrapper({ children, delay = 0 }: FadeUpWrapperProp
                     observer.disconnect();
                 }
             },
-            { threshold: 0.5 }
+            { threshold: 0.3 }
         );
 
         if (ref.current) {
