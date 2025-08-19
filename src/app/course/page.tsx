@@ -1,6 +1,7 @@
 // app/course/page.tsx
 import FadeUpWrapper from "@/component/fadeUpWrapper";
 import Link from "next/link";
+import PhoneCallButton from "@/component/phonecallButton";
 
 type Row = { duration: string; price: string };
 type Course = { name: string; subtitle?: string; rows: Row[]; badge?: string };
@@ -138,16 +139,7 @@ export default function CoursePage() {
                 </div>
 
                 {/* CTA */}
-                <FadeUpWrapper delay={80}>
-                    <div className="mt-10 flex items-center justify-center">
-                        <a
-                            href="tel:010-0000-0000" // TODO: 실제 번호로 교체
-                            className="rounded-xl bg-cyan-500 px-10 py-6 font-semibold text-black hover:bg-cyan-400 transition"
-                        >
-                            전화로 빠른 예약
-                        </a>
-                    </div>
-                </FadeUpWrapper>
+                <PhoneCallButton />
             </section>
 
             <footer className="mx-auto max-w-6xl px-6 pb-12 text-center text-sm text-gray-400">

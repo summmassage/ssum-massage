@@ -2,6 +2,7 @@ import FadeUpWrapper from "@/component/fadeUpWrapper";
 import Image from "next/image";
 import {ShieldIcon} from "@/component/shieldIcon";
 import {AlertIcon} from "@/component/alertIcon";
+import PhoneCallButton from "@/component/phonecallButton";
 
 export default function Home() {
     return (
@@ -197,15 +198,8 @@ export default function Home() {
                         </div>
                     </div>
 
-                    {/* CTA 버튼 */}
-                    <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-                        <a
-                            href="tel:010-0000-0000" // TODO: 실제 번호로 교체
-                            className="rounded-xl bg-cyan-500 px-10 py-6 font-semibold text-black hover:bg-cyan-400 transition"
-                        >
-                            전화 상담하기
-                        </a>
-                    </div>
+                    {/* CTA */}
+                    <PhoneCallButton />
                 </div>
             </section>
 
