@@ -1,6 +1,6 @@
 import FadeUpWrapper from "@/component/fadeUpWrapper";
-import Link from "next/link";
 import PhoneCallButton from "@/component/phonecallButton";
+import HomeLinkButton from "@/component/homeLinkButton";
 
 type Row = { duration: string; price: string };
 type Course = { name: string; subtitle?: string; rows: Row[]; badge?: string };
@@ -48,32 +48,39 @@ export default function CoursePage() {
             {/* 헤더 */}
             <section className="relative overflow-hidden py-2">
                 <div
-                    className="absolute inset-0 opacity-40 blur-3xl"
+                    className="absolute inset-0 opacity-40 blur-3xl pointer-events-none"
                     style={{
                         background:
                             "radial-gradient(60% 50% at 20% 10%, #34d0ff55 0%, transparent 60%), radial-gradient(50% 40% at 90% 30%, #00ffaa33 0%, transparent 60%)",
                     }}
                 />
+
                 <div className="relative z-10 mx-auto max-w-4xl px-6 pt-16 pb-8">
-                    <FadeUpWrapper>
-                        <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
-                            <span className="text-pink-400">SSUM</span> 코스 & 가격
-                        </h1>
-                    </FadeUpWrapper>
+                    {/* 헤더와 버튼을 같은 flex 라인에 배치 */}
+                    <div className="flex items-center justify-between">
+                        <FadeUpWrapper>
+                            <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
+                                <span className="text-pink-400">SSUM</span> 코스 & 가격
+                            </h1>
+                        </FadeUpWrapper>
+
+                        {/* 오른쪽 버튼 */}
+                        <HomeLinkButton />
+                    </div>
+
                     <FadeUpWrapper delay={80}>
                         <p className="mt-3 text-gray-300">
                             서울 · 경기 · 인천 <span className="text-cyan-300 font-semibold">30분 내 도착</span>
-                            <br/>
+                            <br />
                             <span className="font-semibold">현금 · 계좌이체 · 카드 결제 가능</span>
                             <span className="text-gray-400"> (카드 결제 시 부가세 10%)</span>
                         </p>
                     </FadeUpWrapper>
-
                 </div>
             </section>
 
             {/* 표 섹션 */}
-            <section className="relative z-10 mx-auto max-w-4xl px-6 pb-20">
+            <section className="relative z-10 mx-auto max-w-4xl px-6 pb-10 space-y-3">
                 <div className="grid grid-cols-1 gap-8">
                     {courses.map((course, idx) => (
                         <FadeUpWrapper key={course.name} delay={60 * (idx + 1)}>
@@ -139,6 +146,11 @@ export default function CoursePage() {
 
                 {/* CTA */}
                 <PhoneCallButton />
+
+                <div>
+                    <HomeLinkButton />
+                </div>
+
             </section>
 
             <footer className="mx-auto max-w-6xl px-6 pb-12 text-center text-sm text-gray-400">
