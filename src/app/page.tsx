@@ -251,7 +251,6 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-                <CourseLinkButton />
             </section>
 
             {/* 약속 이미지 */}
