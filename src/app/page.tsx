@@ -2,6 +2,8 @@ import FadeUpWrapper from "@/component/fadeUpWrapper";
 import Image from "next/image";
 import {ShieldIcon} from "@/component/shieldIcon";
 import {AlertIcon} from "@/component/alertIcon";
+import PhoneCallButton from "@/component/phonecallButton";
+import CourseLinkButton from "@/component/courseLinkButton";
 
 export default function Home() {
     return (
@@ -71,7 +73,10 @@ export default function Home() {
                             />
                         </div>
                     </FadeUpWrapper>
+
+                    <CourseLinkButton />
                 </div>
+
             </section>
 
             {/* 관리사 섹션 */}
@@ -153,6 +158,8 @@ export default function Home() {
                         </p>
                     </div>
                 </div>
+
+                <CourseLinkButton />
             </section>
 
             {/* 고객 편의 섹션 */}
@@ -197,20 +204,13 @@ export default function Home() {
                         </div>
                     </div>
 
-                    {/* CTA 버튼 */}
-                    <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-                        <a
-                            href="tel:010-0000-0000" // TODO: 실제 번호로 교체
-                            className="rounded-xl bg-cyan-500 px-10 py-6 font-semibold text-black hover:bg-cyan-400 transition"
-                        >
-                            전화 상담하기
-                        </a>
-                    </div>
+                    {/* CTA */}
+                    <PhoneCallButton />
                 </div>
             </section>
 
             {/* 개인정보보호 및 주의 섹션 */}
-            <section className="mx-auto max-w-3xl px-6 py-16">
+            <section className="mx-auto max-w-3xl px-6 py-16 space-y-10">
                 {/* 헤더 */}
                 <div className="flex flex-col items-center text-center space-y-3">
                     <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
@@ -255,6 +255,7 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
+                <CourseLinkButton />
             </section>
 
             {/* 약속 이미지 */}
@@ -272,9 +273,9 @@ export default function Home() {
             </section>
 
             <footer className="mx-auto max-w-6xl px-6 py-12 text-center text-sm text-gray-400">
-                © {new Date().getFullYear()} 썸출장안마 &amp; 썸출장마사지. All rights
-                reserved.
+                © {new Date().getFullYear()} 썸출장안마 &amp; 썸출장마사지. All rights reserved.
             </footer>
+
         </div>
     );
 }
