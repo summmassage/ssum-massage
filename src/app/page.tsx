@@ -271,10 +271,6 @@ export default function Home() {
                 </div>
             </section>
 
-            <footer className="mx-auto max-w-6xl px-6 py-12 text-center text-sm text-gray-400">
-                © {new Date().getFullYear()} 썸출장안마 &amp; 썸출장마사지. All rights
-                reserved.
-            </footer>
         </div>
     );
 }
