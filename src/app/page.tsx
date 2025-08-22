@@ -3,7 +3,7 @@ import Image from "next/image";
 import {ShieldIcon} from "@/component/shieldIcon";
 import {AlertIcon} from "@/component/alertIcon";
 import PhoneCallButton from "@/component/phonecallButton";
-import CourseLinkButton from "@/component/courseLinkButton";
+import {courses} from "@/data/data";
 
 export default function Home() {
     return (
@@ -71,8 +71,6 @@ export default function Home() {
                             className="rounded-2xl shadow-lg shadow-black/40"
                         />
                     </div>
-
-                    <CourseLinkButton />
                 </div>
 
             </section>
@@ -155,7 +153,80 @@ export default function Home() {
                     </div>
                 </div>
 
-                <CourseLinkButton />
+            </section>
+
+            {/* 표 섹션 */}
+            <section className="mx-auto max-w-3xl px-6 py-16 space-y-8">
+                <FadeUpWrapper>
+                    <div className="flex justify-center p-2">
+                        <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
+                            <span className="text-pink-400">SSUM</span> 코스 & 가격
+                        </h1>
+                    </div>
+                </FadeUpWrapper>
+
+                <div className="grid grid-cols-1 gap-8">
+                    {courses.map((course, idx) => (
+                        <FadeUpWrapper key={course.name} delay={60 * (idx + 1)}>
+                            <div className="rounded-2xl bg-gradient-to-br from-white/6 to-white/3 ring-1 ring-white/10 shadow-lg shadow-black/20">
+                                {/* 타이틀 바 */}
+                                <div className="flex items-center justify-between px-6 py-5 border-white/10">
+                                    <div>
+                                        <h2 className="text-2xl font-extrabold tracking-tight">
+                                            {course.name}
+                                        </h2>
+                                        {course.subtitle && (
+                                            <p className="text-sm text-gray-400 mt-1">{course.subtitle}</p>
+                                        )}
+                                    </div>
+                                    {course.badge && (
+                                        <span className="rounded-xl bg-pink-500/20 text-pink-300 text-xs font-semibold px-3 py-1 ring-1 ring-pink-400/40">
+                                        {course.badge}
+                                    </span>
+                                    )}
+                                </div>
+
+                                {/* 표 */}
+                                <div className="px-2 pb-4 sm:px-6 sm:pb-6">
+                                    <div className="overflow-hidden rounded-xl ring-1 ring-white/10">
+                                        <table className="min-w-full divide-y divide-white/10">
+                                            <thead className="bg-white/5">
+                                            <tr>
+                                                <th scope="col" className="px-4 sm:px-6 py-3 text-left text-sm font-semibold text-gray-200">
+                                                    코스 시간
+                                                </th>
+                                                <th scope="col" className="px-4 sm:px-6 py-3 text-left text-sm font-semibold text-gray-200">
+                                                    가격
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody className="divide-y divide-white/10">
+                                            {course.rows.map((row, i) => (
+                                                <tr
+                                                    key={`${course.name}-${row.duration}`}
+                                                    className={i % 2 === 0 ? "bg-white/0" : "bg-white/[0.03]"}
+                                                >
+                                                    <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-white">
+                                                        {row.duration}
+                                                    </td>
+                                                    <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-200">
+                                                        {row.price}
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    {/* 안내 문구 */}
+                                    <p className="mt-3 text-xs sm:text-sm text-gray-400">
+                                        * 표시된 금액은 1인 기준입니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </FadeUpWrapper>
+                    ))}
+                </div>
             </section>
 
             {/* 고객 편의 섹션 */}
