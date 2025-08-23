@@ -24,7 +24,7 @@ export default function LoginPage() {
     }
 
     return (
-        <div className="max-w-md mx-auto p-6 space-y-4">
+        <div className="max-w-md mx-auto p-6 space-y-4 pt-15">
             <h1 className="text-2xl font-bold">관리자 로그인</h1>
             <form onSubmit={handleLogin} className="space-y-6">
                 <div>
