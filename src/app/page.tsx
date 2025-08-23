@@ -159,9 +159,9 @@ export default function Home() {
             <section className="mx-auto max-w-3xl px-6 py-16 space-y-8">
                 <FadeUpWrapper>
                     <div className="flex justify-center p-2">
-                        <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
+                        <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
                             <span className="text-pink-400">SSUM</span> 코스 & 가격
-                        </h1>
+                        </h2>
                     </div>
                 </FadeUpWrapper>
 
