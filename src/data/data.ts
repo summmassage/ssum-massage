@@ -1,3 +1,5 @@
+import {Course} from "@/data/type";
+
 export const courses: Course[] = [
     {
         name: "썸 건식 타이",
@@ -34,6 +36,3 @@ export const courses: Course[] = [
         ],
     },
 ];
-
-export type Row = { duration: string; price: string };
-export type Course = { name: string; subtitle?: string; rows: Row[]; badge?: string };
