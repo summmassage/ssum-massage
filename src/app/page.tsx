@@ -3,6 +3,7 @@ import Image from "next/image";
 import {ShieldIcon} from "@/component/shieldIcon";
 import {AlertIcon} from "@/component/alertIcon";
 import PhoneCallButton from "@/component/phonecallButton";
+import Footer from "@/component/footer";
 import {courses} from "@/data/data";
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
                     {/* 메인 타이틀 */}
                     <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-tight py-5">
                         썸출장마사지 <span className="text-pink-400">SSUM</span>
+                        <span className="sr-only"> — 서울·경기·인천 출장마사지 · 출장안마</span>
                     </h1>
 
                     {/* 어트랙션 */}
@@ -64,8 +66,8 @@ export default function Home() {
                     {/* 인트로 이미지 */}
                     <div className="flex justify-center">
                         <Image
-                            src="/image/썸출장마사지_안내.png"
-                            alt="썸출장마사지_안내"
+                            src="/image/ssum-intro.png"
+                            alt="썸출장마사지 안내 - 서울 경기 인천 출장안마 24시간 후불제"
                             width={600}
                             height={400}
                             className="rounded-2xl shadow-lg shadow-black/40"
@@ -127,8 +129,8 @@ export default function Home() {
                 {/* 이미지 */}
                 <div className="flex justify-center">
                     <Image
-                        src="/image/썸출장마사지_차별화.png"
-                        alt="썸출장마사지_차별화"
+                        src="/image/ssum-difference.png"
+                        alt="썸출장마사지 차별화 - 한국·태국 전원 20대 관리사, 만족도·재방율 1위"
                         width={600}
                         height={400}
                         className="object-cover rounded-lg"
@@ -328,8 +330,8 @@ export default function Home() {
             <section className="mx-auto max-w-3xl px-6 py-8">
                 <div className="flex justify-center">
                     <Image
-                        src="/image/썸출장마사지_약속.png"
-                        alt="썸출장마사지_약속"
+                        src="/image/ssum-promise.png"
+                        alt="썸출장마사지 약속 - 100% 후불제, 안심 DB 관리"
                         width={600}
                         height={400}
                         className="object-cover rounded-lg"
@@ -338,9 +340,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <footer className="mx-auto max-w-6xl px-6 py-12 text-center text-sm text-gray-400">
-                © {new Date().getFullYear()} 썸출장안마 &amp; 썸출장마사지. All rights reserved.
-            </footer>
+            <Footer />
 
         </div>
     );
