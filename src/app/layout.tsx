@@ -8,6 +8,7 @@ import {
     faqJsonLd,
 } from "@/lib/seo";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -59,6 +60,7 @@ export default function RootLayout({
             dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
         {children}
+        <Analytics />
       </body>
     </html>
   );
