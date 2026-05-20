@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:searchadvisor.naver.com)",
+      "WebFetch(domain:www.designkits.co.kr)"
+    ]
+  }
+}
