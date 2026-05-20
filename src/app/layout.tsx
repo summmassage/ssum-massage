@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import {
+    SITE_URL,
+    SITE_TITLE,
+    SITE_DESCRIPTION,
+    localBusinessJsonLd,
+    faqJsonLd,
+} from "@/lib/seo";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,21 +20,21 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "썸출장마사지 | 전원 20대 관리사 | 100% 후불제 | 서울 경기 인천",
-    description: "서울·경기·인천 30분 내 도착. 365일 24시간 영업하고있습니다. 현금/계좌/카드 가능. 안심 DB 운영.",
+    metadataBase: new URL(SITE_URL),
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     robots: {
         index: true,
         follow: true,
     },
     openGraph: {
         type: "website",
-        url: "https://ssum-massage.com/",
-        title: "썸출장마사지 | 전원 20대 관리사 | 100% 후불제 | 서울 경기 인천",
-        description:
-            "서울·경기·인천 전지역 30분 내 도착, 365일 24시간 영업. 현금/계좌/카드 가능. 안심 DB 운영.",
+        url: SITE_URL + "/",
+        title: SITE_TITLE,
+        description: SITE_DESCRIPTION,
         siteName: "썸출장마사지",
         images: [
-            { url: "/image/og.png", width: 700, height: 800, alt: "썸출장마사지 안내" },
+            { url: "/image/og.png", width: 1384, height: 726, alt: "썸출장마사지 — 서울·경기·인천 24시간 후불제 출장마사지" },
         ],
         locale: "ko_KR",
     },
@@ -43,6 +50,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+        />
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
         {children}
       </body>
     </html>
