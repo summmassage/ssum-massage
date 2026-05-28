@@ -62,7 +62,7 @@ export default function IntroSection() {
                                 출장마사지
                             </h1>
 
-                            <aside className="mt-8 grid grid-cols-3 gap-4">
+                            <aside className="mt-8 grid grid-cols-3 gap-2 sm:gap-4">
                                 <HeroStat num="30" unit="분" lbl={<>서울, 경기, 인천<br />전 지역 도착</>} sub="경기 외곽, 피크시간 다소 소요" />
                                 <HeroStat num="24" unit="h" lbl={<>365일 24시간<br />언제든 예약</>} sub="00:00 ~ 23:59 연중무휴" />
                                 <HeroStat num="100" unit="%" lbl={<>후불제<br />예약금 없음</>} sub="현금, 계좌, 카드 모두 가능" />
@@ -107,23 +107,23 @@ function HeroStat({
     sub: string;
 }) {
     return (
-        <div className="flex flex-col rounded-2xl bg-white/[0.06] border border-white/[0.1] backdrop-blur-md p-6">
+        <div className="flex flex-col rounded-xl sm:rounded-2xl bg-white/[0.06] border border-white/[0.1] backdrop-blur-md p-3 sm:p-6">
             <div
-                className="text-gold font-display font-bold leading-none mb-4"
-                style={{ fontSize: 44, letterSpacing: "-0.01em" }}
+                className="text-gold font-display font-bold leading-none mb-2 sm:mb-4 text-[26px] sm:text-[44px]"
+                style={{ letterSpacing: "-0.01em" }}
             >
                 {num}
-                <small className="text-brand-mute font-medium ml-0.5" style={{ fontSize: 18 }}>
+                <small className="text-brand-mute font-medium ml-0.5 text-[12px] sm:text-[18px]">
                     {unit}
                 </small>
             </div>
             <div
-                className="text-on-dark font-semibold mb-2"
-                style={{ fontSize: 18, letterSpacing: "-0.01em", lineHeight: 1.4 }}
+                className="text-on-dark font-semibold mb-1 sm:mb-2 text-[12px] sm:text-[18px]"
+                style={{ letterSpacing: "-0.01em", lineHeight: 1.4 }}
             >
                 {lbl}
             </div>
-            <div className="text-brand-mute" style={{ fontSize: 14, lineHeight: 1.55 }}>
+            <div className="hidden sm:block text-brand-mute text-[10px] sm:text-[14px]" style={{ lineHeight: 1.55 }}>
                 {sub}
             </div>
         </div>
