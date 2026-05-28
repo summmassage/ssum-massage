@@ -3,10 +3,10 @@ import { courses } from "@/data/data";
 export const SITE_URL = "https://ssum-massage.com";
 
 export const SITE_TITLE =
-    "서울, 경기, 인천 출장마사지, 출장안마 — 썸출장마사지 썸마사지 | 전원 20대 관리사 · 100% 후불제";
+    "서울, 경기, 인천 출장마사지, 출장안마 — 썸출장마사지 썸마사지 | 전원 20대 관리사, 100% 후불제";
 
 export const SITE_DESCRIPTION =
-    "서울, 경기, 인천 30분 내 도착하는 출장마사지,출장안마. 365일 24시간 영업, 100% 후불제. 현금,계좌,카드 결제 가능. 안심 DB 운영.";
+    "서울, 경기, 인천 30분 내 도착하는 출장마사지, 출장안마. 365일 24시간 영업, 100% 후불제. 현금, 계좌, 카드 결제 가능. 안심 DB 운영.";
 
 export const localBusinessJsonLd = {
     "@context": "https://schema.org",
@@ -56,7 +56,7 @@ export const faqJsonLd = {
             acceptedAnswer: {
                 "@type": "Answer",
                 text:
-                    "썸출장안마·썸출장마사지는 100% 후불제입니다. 관리사 도착 후 결제하시면 됩니다. 예약금이나 보증금을 요구하는 곳은 사기 업체일 가능성이 높으니 주의하세요.",
+                    "썸출장안마, 썸출장마사지는 100% 후불제입니다. 관리사 도착 후 결제하시면 됩니다. 예약금이나 보증금을 요구하는 곳은 사기 업체일 가능성이 높으니 주의하세요.",
             },
         },
         {

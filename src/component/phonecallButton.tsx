@@ -25,16 +25,13 @@ export default function PhoneCallButton() {
         setIsMobile(/iphone|ipad|ipod|android/.test(ua));
     }, []);
 
-    // 기본값 처리
     const call1 = phones.call1 ?? "010-0000-0000";
     const call2 = phones.call2 ?? "010-0000-0000";
 
     function handleClick(number: string) {
         if (isMobile) {
-            // 모바일: 바로 전화
             window.location.href = `tel:${number}`;
         } else {
-            // 데스크톱: 모달로 번호 보여주기
             setSelectedNumber(number);
             setModalOpen(true);
         }
@@ -42,32 +39,9 @@ export default function PhoneCallButton() {
 
     return (
         <>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 mt-10">
-                {/* 첫 번째 버튼 */}
-                <button
-                    onClick={() => handleClick(call1)}
-                    aria-label="전화 상담하기"
-                    className="btn-call inline-flex items-center gap-2 rounded-2xl px-10 py-6
-                           font-semibold text-white cursor-pointer
-                           shadow-lg shadow-black/20 ring-1 ring-white/10
-                           transition-transform duration-200 hover:scale-[1.02]"
-                >
-                    <Phone className="h-5 w-5 opacity-90" />
-                    <span className="text-base sm:text-lg tracking-tight">전화 상담 1</span>
-                </button>
-
-                {/* 두 번째 버튼 */}
-                <button
-                    onClick={() => handleClick(call2)}
-                    aria-label="전화 상담하기"
-                    className="btn-call inline-flex items-center gap-2 rounded-2xl px-10 py-6
-                           font-semibold text-white cursor-pointer
-                           shadow-lg shadow-black/20 ring-1 ring-white/10
-                           transition-transform duration-200 hover:scale-[1.02]"
-                >
-                    <Phone className="h-5 w-5 opacity-90" />
-                    <span className="text-base sm:text-lg tracking-tight">전화 상담 2</span>
-                </button>
+            <div className="flex flex-col sm:flex-row gap-5">
+                <PhoneCard label="전화상담 1" onClick={() => handleClick(call1)} />
+                <PhoneCard label="전화상담 2" onClick={() => handleClick(call2)} />
             </div>
 
             <PhoneModal
@@ -77,5 +51,33 @@ export default function PhoneCallButton() {
                 number={selectedNumber}
             />
         </>
+    );
+}
+
+function PhoneCard({
+    label,
+    onClick,
+}: {
+    label: string;
+    onClick: () => void;
+}) {
+    return (
+        <button
+            type="button"
+            onClick={onClick}
+            aria-label={label}
+            className="group cursor-pointer w-full max-w-[240px] sm:w-[320px] bg-gold text-brand-black rounded-full px-5 py-3.5 flex items-center justify-center gap-3 font-display font-bold transition hover:bg-gold-600 hover:-translate-y-0.5"
+            style={{ boxShadow: "var(--shadow-glow-gold)" }}
+        >
+            <span className="w-9 h-9 rounded-full bg-brand-black text-gold grid place-items-center shrink-0 transition group-hover:scale-105">
+                <Phone className="h-3.5 w-3.5" strokeWidth={2.2} />
+            </span>
+            <span
+                className="tracking-tight"
+                style={{ fontSize: 16, letterSpacing: "-0.01em" }}
+            >
+                {label}
+            </span>
+        </button>
     );
 }
