@@ -38,6 +38,7 @@ export const courses: Course[] = [
     },
     {
         name: "썸 한국인 스웨디시",
+        subtitle: "한국인 관리사가 방문하는 코스입니다.",
         kicker: "Course 04",
         rows: [
             { duration: "60분", price: "150,000원" },
