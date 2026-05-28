@@ -39,7 +39,7 @@ export default function PhoneCallButton() {
 
     return (
         <>
-            <div className="flex flex-col sm:flex-row gap-5">
+            <div className="flex flex-row gap-3 sm:gap-5 w-full justify-center">
                 <PhoneCard label="전화상담 1" onClick={() => handleClick(call1)} />
                 <PhoneCard label="전화상담 2" onClick={() => handleClick(call2)} />
             </div>
@@ -66,15 +66,15 @@ function PhoneCard({
             type="button"
             onClick={onClick}
             aria-label={label}
-            className="group cursor-pointer w-full max-w-[240px] sm:w-[320px] bg-gold text-brand-black rounded-full px-5 py-3.5 flex items-center justify-center gap-3 font-display font-bold transition hover:bg-gold-600 hover:-translate-y-0.5"
+            className="group cursor-pointer flex-1 max-w-[200px] sm:max-w-none sm:w-[320px] bg-gold text-brand-black rounded-full px-3 py-3 sm:px-5 sm:py-3.5 flex items-center justify-center gap-2 sm:gap-3 font-display font-bold transition hover:bg-gold-600 hover:-translate-y-0.5"
             style={{ boxShadow: "var(--shadow-glow-gold)" }}
         >
-            <span className="w-9 h-9 rounded-full bg-brand-black text-gold grid place-items-center shrink-0 transition group-hover:scale-105">
-                <Phone className="h-3.5 w-3.5" strokeWidth={2.2} />
+            <span className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-brand-black text-gold grid place-items-center shrink-0 transition group-hover:scale-105">
+                <Phone className="h-3 w-3 sm:h-3.5 sm:w-3.5" strokeWidth={2.2} />
             </span>
             <span
-                className="tracking-tight"
-                style={{ fontSize: 16, letterSpacing: "-0.01em" }}
+                className="tracking-tight text-sm sm:text-base whitespace-nowrap"
+                style={{ letterSpacing: "-0.01em" }}
             >
                 {label}
             </span>

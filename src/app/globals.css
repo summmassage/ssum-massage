@@ -147,6 +147,7 @@ html {
   word-break: keep-all;
   line-break: strict;
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {

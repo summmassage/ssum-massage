@@ -5,6 +5,7 @@ import {
     SITE_URL,
     SITE_TITLE,
     SITE_DESCRIPTION,
+    OG_IMAGE_PATH,
     localBusinessJsonLd,
     faqJsonLd,
 } from "@/lib/seo";
@@ -49,7 +50,7 @@ export const metadata: Metadata = {
         description: SITE_DESCRIPTION,
         siteName: "썸출장마사지",
         images: [
-            { url: "/image/og-image-option2.png", width: 1384, height: 726, alt: "썸출장마사지 — 서울, 경기, 인천 24시간 후불제 출장마사지" },
+            { url: OG_IMAGE_PATH, width: 1384, height: 726, alt: "썸출장마사지 — 서울, 경기, 인천 24시간 후불제 출장마사지" },
         ],
         locale: "ko_KR",
     },
