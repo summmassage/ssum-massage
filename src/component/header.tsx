@@ -23,7 +23,7 @@ export default function Header() {
                                 <a
                                     href={item.href}
                                     className="text-on-dark/80 hover:text-white transition-colors font-medium"
-                                    style={{ fontSize: 14, letterSpacing: "-0.01em" }}
+                                    style={{ fontSize: 16, letterSpacing: "-0.01em" }}
                                 >
                                     {item.label}
                                 </a>
