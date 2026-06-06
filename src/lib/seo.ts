@@ -5,7 +5,7 @@ export const SITE_URL = "https://ssum-massage.com";
 export const OG_IMAGE_PATH = "/image/og-image-option2.png";
 
 export const SITE_TITLE =
-    "서울, 경기, 인천 출장마사지, 출장안마 — 썸출장마사지 썸마사지 | 전원 20대 관리사, 100% 후불제";
+    "썸출장마사지 썸출장안마 서울, 경기, 인천 24시간 후불";
 
 export const SITE_DESCRIPTION =
     "서울, 경기, 인천 30분 내 도착하는 출장마사지, 출장안마. 365일 24시간 영업, 100% 후불제. 현금, 계좌, 카드 결제 가능. 안심 DB 운영.";
