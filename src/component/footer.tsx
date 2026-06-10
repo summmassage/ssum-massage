@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { REGIONS } from "@/data/regions";
+
 export default function Footer() {
     return (
         <footer className="bg-brand-ink border-t border-white/[0.12] pt-20 pb-14">
@@ -30,7 +33,23 @@ export default function Footer() {
                             <FootItem>관리사 — 한국, 태국 전원 20대 / 30명 이상</FootItem>
                         </ul>
                     </div>
+                </div>
 
+                <div className="mt-14 pt-10 border-t border-white/[0.08]">
+                    <FootHead>LOCATIONS</FootHead>
+                    <ul className="list-none p-0 m-0 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-x-4 gap-y-2">
+                        {REGIONS.map((r) => (
+                            <li key={r.slug}>
+                                <Link
+                                    href={`/${r.slug}`}
+                                    className="text-brand-mute hover:text-white transition-colors"
+                                    style={{ fontSize: 13, lineHeight: 1.9, letterSpacing: "-0.005em" }}
+                                >
+                                    {r.name}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
             </div>
         </footer>

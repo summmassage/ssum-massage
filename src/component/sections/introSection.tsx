@@ -2,7 +2,9 @@ import Image from "next/image";
 import FadeUpWrapper from "@/component/fadeUpWrapper";
 import { Phone, ArrowRight } from "lucide-react";
 
-export default function IntroSection() {
+type Props = { highlightWord?: string };
+
+export default function IntroSection({ highlightWord = "프리미엄" }: Props) {
     return (
         <section className="relative overflow-hidden isolate bg-brand-black pt-30 pb-8 sm:pt-35 sm:pb-24">
             {/* Background image — starts below fixed header so the top of the image isn't covered */}
@@ -57,8 +59,9 @@ export default function IntroSection() {
                                     className="text-gold font-display font-bold"
                                     style={{ letterSpacing: "-0.015em" }}
                                 >
-                                    프리미엄
-                                </span>{" "}
+                                    {highlightWord}
+                                </span>
+                                <br />
                                 출장마사지
                             </h1>
 
