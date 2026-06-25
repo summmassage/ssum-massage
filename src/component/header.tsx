@@ -6,8 +6,19 @@ import { Menu, X } from "lucide-react";
 import { REGIONS } from "@/data/regions";
 
 const METRO_SLUGS = ["seoul", "gyeonggi", "incheon"] as const;
+const GYEONGGI_SLUGS = [
+    "gwacheon", "gwangmyeong", "gwangju", "guri", "gunpo", "gimpo",
+    "namyangju", "bucheon", "seongnam", "suwon", "siheung", "ansan",
+    "anseong", "anyang", "yangju", "osan", "yongin", "uiwang",
+    "uijeongbu", "goyang", "paju", "pyeongtaek", "hanam", "hwaseong",
+] as const;
+
 const SEOUL_GU = REGIONS
-    .filter((r) => !METRO_SLUGS.includes(r.slug as (typeof METRO_SLUGS)[number]))
+    .filter((r) => !METRO_SLUGS.includes(r.slug as (typeof METRO_SLUGS)[number]) && !GYEONGGI_SLUGS.includes(r.slug as (typeof GYEONGGI_SLUGS)[number]))
+    .sort((a, b) => a.name.localeCompare(b.name, "ko"));
+
+const GYEONGGI_CITY = REGIONS
+    .filter((r) => GYEONGGI_SLUGS.includes(r.slug as (typeof GYEONGGI_SLUGS)[number]))
     .sort((a, b) => a.name.localeCompare(b.name, "ko"));
 
 const NAV_ITEMS = [
@@ -70,13 +81,36 @@ export default function Header() {
                         </div>
                     </div>
 
-                    <Link
-                        href="/gyeonggi"
-                        className="text-on-dark/80 hover:text-white transition-colors font-medium py-2"
-                        style={{ fontSize: 16, letterSpacing: "-0.01em" }}
-                    >
-                        경기
-                    </Link>
+                    {/* 경기 — with dropdown of cities */}
+                    <div className="relative group">
+                        <Link
+                            href="/gyeonggi"
+                            className="text-on-dark/80 hover:text-white transition-colors font-medium py-2"
+                            style={{ fontSize: 16, letterSpacing: "-0.01em" }}
+                        >
+                            경기
+                        </Link>
+                        <div className="absolute left-1/2 top-full -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-200">
+                            <div
+                                className="rounded-xl border border-white/[0.12] bg-brand-black/95 backdrop-blur-xl p-3 shadow-2xl"
+                                style={{ minWidth: 360 }}
+                            >
+                                <ul className="grid grid-cols-3 gap-x-2 gap-y-0.5 list-none m-0 p-0">
+                                    {GYEONGGI_CITY.map((r) => (
+                                        <li key={r.slug}>
+                                            <Link
+                                                href={`/${r.slug}`}
+                                                className="block px-3 py-2 rounded-md text-on-dark/80 hover:text-gold hover:bg-white/[0.05] transition-colors"
+                                                style={{ fontSize: 14, letterSpacing: "-0.005em" }}
+                                            >
+                                                {r.name}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
                     <Link
                         href="/incheon"
@@ -165,6 +199,21 @@ export default function Header() {
                             >
                                 경기
                             </Link>
+                            <ul className="mt-2 mb-5 pl-4 grid grid-cols-3 gap-x-2 gap-y-1 list-none p-0 border-l border-white/[0.08]">
+                                {GYEONGGI_CITY.map((r) => (
+                                    <li key={r.slug}>
+                                        <Link
+                                            href={`/${r.slug}`}
+                                            onClick={close}
+                                            className="block py-1.5 px-2 rounded text-on-dark/75 hover:text-gold transition-colors"
+                                            style={{ fontSize: 14, letterSpacing: "-0.005em" }}
+                                        >
+                                            {r.name}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+
                             <Link
                                 href="/incheon"
                                 onClick={close}
