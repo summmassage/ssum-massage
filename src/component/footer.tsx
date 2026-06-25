@@ -51,7 +51,7 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="mt-14 pt-10 border-t border-white/[0.08] space-y-8">
+                <nav aria-label="서비스 지역" className="mt-14 pt-10 border-t border-white/[0.08] space-y-8">
                     <FootHead>LOCATIONS</FootHead>
 
                     {/* 서울 그룹 */}
@@ -112,7 +112,7 @@ export default function Footer() {
                             인천
                         </Link>
                     </div>
-                </div>
+                </nav>
             </div>
         </footer>
     );
@@ -120,12 +120,12 @@ export default function Footer() {
 
 function FootHead({ children }: { children: React.ReactNode }) {
     return (
-        <h6
+        <p
             className="font-display text-gold m-0 mb-4"
             style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase" }}
         >
             {children}
-        </h6>
+        </p>
     );
 }
 
