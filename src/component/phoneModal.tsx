@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { X, Copy, Phone } from "lucide-react";
 
 interface PhoneModalProps {
@@ -18,7 +19,12 @@ export default function PhoneModal({
 }: PhoneModalProps) {
     const dialogRef = useRef<HTMLDivElement>(null);
     const closeBtnRef = useRef<HTMLButtonElement>(null);
+    const [mounted, setMounted] = useState(false);
     const [copied, setCopied] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     useEffect(() => {
         function handler(e: KeyboardEvent) {
@@ -55,20 +61,24 @@ export default function PhoneModal({
         }
     }
 
-    if (!open) return null;
+    if (!open || !mounted) return null;
 
-    return (
+    return createPortal(
         <div
             ref={dialogRef}
             onMouseDown={handleBackdrop}
-            className="fixed inset-0 z-[1000] flex items-center justify-center"
-            style={{ background: "rgba(0,0,0,.65)", backdropFilter: "blur(10px)" }}
+            className="fixed inset-0 z-[1000] flex items-start justify-center overflow-y-auto px-4 pb-6 sm:pb-10"
+            style={{
+                paddingTop: "clamp(72px, 12vh, 140px)",
+                background: "rgba(0,0,0,.65)",
+                backdropFilter: "blur(10px)",
+            }}
             aria-modal="true"
             role="dialog"
             aria-labelledby="phone-modal-title"
         >
             <div
-                className="mx-4 w-full max-w-md bg-brand-graphite border border-white/[0.12] rounded-[20px] text-white text-center px-5 pt-8 pb-7 sm:px-9 sm:pt-10 sm:pb-8"
+                className="w-full max-w-md bg-brand-graphite border border-white/[0.12] rounded-[20px] text-white text-center px-5 pt-8 pb-7 sm:px-9 sm:pt-10 sm:pb-8"
                 style={{ boxShadow: "0 30px 80px rgba(0,0,0,.6)" }}
             >
                 <div className="ds-pulse w-24 h-24 rounded-full bg-gold text-brand-black grid place-items-center mx-auto mb-5">
@@ -112,6 +122,7 @@ export default function PhoneModal({
                     닫기
                 </button>
             </div>
-        </div>
+        </div>,
+        document.body
     );
 }
