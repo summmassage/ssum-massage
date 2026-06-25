@@ -1,6 +1,22 @@
 import Link from "next/link";
 import { REGIONS } from "@/data/regions";
 
+const METRO_SLUGS = ["seoul", "gyeonggi", "incheon"] as const;
+const GYEONGGI_SLUGS = [
+    "gwacheon", "gwangmyeong", "gwangju", "guri", "gunpo", "gimpo",
+    "namyangju", "bucheon", "seongnam", "suwon", "siheung", "ansan",
+    "anseong", "anyang", "yangju", "osan", "yongin", "uiwang",
+    "uijeongbu", "goyang", "paju", "pyeongtaek", "hanam", "hwaseong",
+] as const;
+
+const SEOUL_GU = REGIONS
+    .filter((r) => !METRO_SLUGS.includes(r.slug as (typeof METRO_SLUGS)[number]) && !GYEONGGI_SLUGS.includes(r.slug as (typeof GYEONGGI_SLUGS)[number]))
+    .sort((a, b) => a.name.localeCompare(b.name, "ko"));
+
+const GYEONGGI_CITY = REGIONS
+    .filter((r) => GYEONGGI_SLUGS.includes(r.slug as (typeof GYEONGGI_SLUGS)[number]))
+    .sort((a, b) => a.name.localeCompare(b.name, "ko"));
+
 export default function Footer() {
     return (
         <footer className="bg-brand-ink border-t border-white/[0.12] pt-20 pb-14">
@@ -35,21 +51,67 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="mt-14 pt-10 border-t border-white/[0.08]">
+                <div className="mt-14 pt-10 border-t border-white/[0.08] space-y-8">
                     <FootHead>LOCATIONS</FootHead>
-                    <ul className="list-none p-0 m-0 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-x-4 gap-y-2">
-                        {REGIONS.map((r) => (
-                            <li key={r.slug}>
-                                <Link
-                                    href={`/${r.slug}`}
-                                    className="text-brand-mute hover:text-white transition-colors"
-                                    style={{ fontSize: 13, lineHeight: 1.9, letterSpacing: "-0.005em" }}
-                                >
-                                    {r.name}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
+
+                    {/* 서울 그룹 */}
+                    <div>
+                        <Link
+                            href="/seoul"
+                            className="inline-block font-bold text-white hover:text-gold transition-colors mb-3"
+                            style={{ fontSize: 14, letterSpacing: "-0.01em" }}
+                        >
+                            서울
+                        </Link>
+                        <ul className="list-none p-0 m-0 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-x-4 gap-y-1.5">
+                            {SEOUL_GU.map((r) => (
+                                <li key={r.slug}>
+                                    <Link
+                                        href={`/${r.slug}`}
+                                        className="text-brand-mute hover:text-white transition-colors"
+                                        style={{ fontSize: 13, lineHeight: 1.9, letterSpacing: "-0.005em" }}
+                                    >
+                                        {r.name}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* 경기 그룹 */}
+                    <div>
+                        <Link
+                            href="/gyeonggi"
+                            className="inline-block font-bold text-white hover:text-gold transition-colors mb-3"
+                            style={{ fontSize: 14, letterSpacing: "-0.01em" }}
+                        >
+                            경기
+                        </Link>
+                        <ul className="list-none p-0 m-0 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-x-4 gap-y-1.5">
+                            {GYEONGGI_CITY.map((r) => (
+                                <li key={r.slug}>
+                                    <Link
+                                        href={`/${r.slug}`}
+                                        className="text-brand-mute hover:text-white transition-colors"
+                                        style={{ fontSize: 13, lineHeight: 1.9, letterSpacing: "-0.005em" }}
+                                    >
+                                        {r.name}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* 인천 */}
+                    <div>
+                        <Link
+                            href="/incheon"
+                            className="inline-block font-bold text-white hover:text-gold transition-colors"
+                            style={{ fontSize: 14, letterSpacing: "-0.01em" }}
+                        >
+                            인천
+                        </Link>
+                    </div>
                 </div>
             </div>
         </footer>
