@@ -1,6 +1,6 @@
 import { courses, faqs } from "@/data/data";
 
-export const SITE_URL = "https://www.ssum-massage.com";
+export const SITE_URL = "https://ssum-massage.com";
 
 export const OG_IMAGE_PATH = "/image/og-image-option2.png";
 
