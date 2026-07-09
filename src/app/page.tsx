@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Footer from "@/component/footer";
 import Header from "@/component/header";
 import FloatingPhoneButton from "@/component/floatingPhoneButton";
@@ -10,6 +11,11 @@ import PromiseSection from "@/component/sections/promiseSection";
 import ContactInfoSection from "@/component/sections/contactInfoSection";
 import CautionSection from "@/component/sections/cautionSection";
 import FaqSection from "@/component/sections/faqSection";
+import { SITE_URL } from "@/lib/seo";
+
+export const metadata: Metadata = {
+    alternates: { canonical: `${SITE_URL}/` },
+};
 
 export default function Home() {
     return (
