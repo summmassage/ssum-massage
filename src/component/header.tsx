@@ -12,13 +12,25 @@ const GYEONGGI_SLUGS = [
     "anseong", "anyang", "yangju", "osan", "yongin", "uiwang",
     "uijeongbu", "goyang", "paju", "pyeongtaek", "hanam", "hwaseong",
 ] as const;
+const INCHEON_SLUGS = [
+    "geomdan", "gyeyang", "namdong", "michuhol", "bupyeong",
+    "seohae", "yeonsu", "yeongjong", "jemulpo",
+] as const;
+
+const isGyeonggi = (slug: string) => GYEONGGI_SLUGS.includes(slug as (typeof GYEONGGI_SLUGS)[number]);
+const isIncheon = (slug: string) => INCHEON_SLUGS.includes(slug as (typeof INCHEON_SLUGS)[number]);
+const isMetro = (slug: string) => METRO_SLUGS.includes(slug as (typeof METRO_SLUGS)[number]);
 
 const SEOUL_GU = REGIONS
-    .filter((r) => !METRO_SLUGS.includes(r.slug as (typeof METRO_SLUGS)[number]) && !GYEONGGI_SLUGS.includes(r.slug as (typeof GYEONGGI_SLUGS)[number]))
+    .filter((r) => !isMetro(r.slug) && !isGyeonggi(r.slug) && !isIncheon(r.slug))
     .sort((a, b) => a.name.localeCompare(b.name, "ko"));
 
 const GYEONGGI_CITY = REGIONS
-    .filter((r) => GYEONGGI_SLUGS.includes(r.slug as (typeof GYEONGGI_SLUGS)[number]))
+    .filter((r) => isGyeonggi(r.slug))
+    .sort((a, b) => a.name.localeCompare(b.name, "ko"));
+
+const INCHEON_GU = REGIONS
+    .filter((r) => isIncheon(r.slug))
     .sort((a, b) => a.name.localeCompare(b.name, "ko"));
 
 const NAV_ITEMS = [
@@ -112,13 +124,36 @@ export default function Header() {
                         </div>
                     </div>
 
-                    <Link
-                        href="/incheon"
-                        className="text-on-dark/80 hover:text-white transition-colors font-medium py-2"
-                        style={{ fontSize: 16, letterSpacing: "-0.01em" }}
-                    >
-                        인천
-                    </Link>
+                    {/* 인천 — with dropdown of districts */}
+                    <div className="relative group">
+                        <Link
+                            href="/incheon"
+                            className="text-on-dark/80 hover:text-white transition-colors font-medium py-2"
+                            style={{ fontSize: 16, letterSpacing: "-0.01em" }}
+                        >
+                            인천
+                        </Link>
+                        <div className="absolute left-1/2 top-full -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-200">
+                            <div
+                                className="rounded-xl border border-white/[0.12] bg-brand-black/95 backdrop-blur-xl p-3 shadow-2xl"
+                                style={{ minWidth: 360 }}
+                            >
+                                <ul className="grid grid-cols-3 gap-x-2 gap-y-0.5 list-none m-0 p-0">
+                                    {INCHEON_GU.map((r) => (
+                                        <li key={r.slug}>
+                                            <Link
+                                                href={`/${r.slug}`}
+                                                className="block px-3 py-2 rounded-md text-on-dark/80 hover:text-gold hover:bg-white/[0.05] transition-colors"
+                                                style={{ fontSize: 14, letterSpacing: "-0.005em" }}
+                                            >
+                                                {r.name}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </nav>
 
                 {/* Right: anchor menu (desktop only) */}
@@ -222,6 +257,20 @@ export default function Header() {
                             >
                                 인천
                             </Link>
+                            <ul className="mt-2 pl-4 grid grid-cols-3 gap-x-2 gap-y-1 list-none p-0 border-l border-white/[0.08]">
+                                {INCHEON_GU.map((r) => (
+                                    <li key={r.slug}>
+                                        <Link
+                                            href={`/${r.slug}`}
+                                            onClick={close}
+                                            className="block py-1.5 px-2 rounded text-on-dark/75 hover:text-gold transition-colors"
+                                            style={{ fontSize: 14, letterSpacing: "-0.005em" }}
+                                        >
+                                            {r.name}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
                         </section>
 
                         {/* 바로가기 section */}
