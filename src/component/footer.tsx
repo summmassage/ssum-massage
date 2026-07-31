@@ -8,13 +8,25 @@ const GYEONGGI_SLUGS = [
     "anseong", "anyang", "yangju", "osan", "yongin", "uiwang",
     "uijeongbu", "goyang", "paju", "pyeongtaek", "hanam", "hwaseong",
 ] as const;
+const INCHEON_SLUGS = [
+    "geomdan", "gyeyang", "namdong", "michuhol", "bupyeong",
+    "seohae", "yeonsu", "yeongjong", "jemulpo",
+] as const;
+
+const isGyeonggi = (slug: string) => GYEONGGI_SLUGS.includes(slug as (typeof GYEONGGI_SLUGS)[number]);
+const isIncheon = (slug: string) => INCHEON_SLUGS.includes(slug as (typeof INCHEON_SLUGS)[number]);
+const isMetro = (slug: string) => METRO_SLUGS.includes(slug as (typeof METRO_SLUGS)[number]);
 
 const SEOUL_GU = REGIONS
-    .filter((r) => !METRO_SLUGS.includes(r.slug as (typeof METRO_SLUGS)[number]) && !GYEONGGI_SLUGS.includes(r.slug as (typeof GYEONGGI_SLUGS)[number]))
+    .filter((r) => !isMetro(r.slug) && !isGyeonggi(r.slug) && !isIncheon(r.slug))
     .sort((a, b) => a.name.localeCompare(b.name, "ko"));
 
 const GYEONGGI_CITY = REGIONS
-    .filter((r) => GYEONGGI_SLUGS.includes(r.slug as (typeof GYEONGGI_SLUGS)[number]))
+    .filter((r) => isGyeonggi(r.slug))
+    .sort((a, b) => a.name.localeCompare(b.name, "ko"));
+
+const INCHEON_GU = REGIONS
+    .filter((r) => isIncheon(r.slug))
     .sort((a, b) => a.name.localeCompare(b.name, "ko"));
 
 export default function Footer() {
@@ -102,15 +114,28 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* 인천 */}
+                    {/* 인천 그룹 */}
                     <div>
                         <Link
                             href="/incheon"
-                            className="inline-block font-bold text-white hover:text-gold transition-colors"
+                            className="inline-block font-bold text-white hover:text-gold transition-colors mb-3"
                             style={{ fontSize: 14, letterSpacing: "-0.01em" }}
                         >
                             인천
                         </Link>
+                        <ul className="list-none p-0 m-0 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-x-4 gap-y-1.5">
+                            {INCHEON_GU.map((r) => (
+                                <li key={r.slug}>
+                                    <Link
+                                        href={`/${r.slug}`}
+                                        className="text-brand-mute hover:text-white transition-colors"
+                                        style={{ fontSize: 13, lineHeight: 1.9, letterSpacing: "-0.005em" }}
+                                    >
+                                        {r.name}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </nav>
             </div>
