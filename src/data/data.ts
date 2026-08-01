@@ -41,8 +41,8 @@ export const courses: Course[] = [
         subtitle: "한국인 관리사가 방문하는 코스입니다.",
         kicker: "Course 04",
         rows: [
-            { duration: "60분", price: "150,000원" },
-            { duration: "90분", price: "190,000원" },
+            { duration: "60분", price: "140,000원" },
+            { duration: "90분", price: "180,000원" },
         ],
     },
 ];
