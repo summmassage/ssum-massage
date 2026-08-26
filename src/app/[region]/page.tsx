@@ -12,6 +12,7 @@ import ContactInfoSection from "@/component/sections/contactInfoSection";
 import CautionSection from "@/component/sections/cautionSection";
 import FaqSection from "@/component/sections/faqSection";
 import RegionHeroSection from "@/component/sections/regionHeroSection";
+import RegionLinkSection from "@/component/sections/regionLinkSection";
 import RegionReviewSection from "@/component/sections/regionReviewSection";
 import { REGIONS, getRegionBySlug } from "@/data/regions";
 import { SITE_URL, OG_IMAGE_PATH } from "@/lib/seo";
@@ -99,6 +100,7 @@ export default async function RegionPage({ params }: Props) {
             <Header />
             <IntroSection highlightWord={region.shortName} />
             <RegionHeroSection region={region} />
+            <RegionLinkSection region={region} />
             <HighlightSection />
             <TherapistSection />
             <RegionReviewSection region={region} />
