@@ -3,35 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import { REGIONS } from "@/data/regions";
 
-const METRO_SLUGS = ["seoul", "gyeonggi", "incheon"] as const;
-const GYEONGGI_SLUGS = [
-    "gwacheon", "gwangmyeong", "gwangju", "guri", "gunpo", "gimpo",
-    "namyangju", "bucheon", "seongnam", "suwon", "siheung", "ansan",
-    "anseong", "anyang", "yangju", "osan", "yongin", "uiwang",
-    "uijeongbu", "goyang", "paju", "pyeongtaek", "hanam", "hwaseong",
-] as const;
-const INCHEON_SLUGS = [
-    "geomdan", "gyeyang", "namdong", "michuhol", "bupyeong",
-    "seohae", "yeonsu", "yeongjong", "jemulpo",
-] as const;
-
-const isGyeonggi = (slug: string) => GYEONGGI_SLUGS.includes(slug as (typeof GYEONGGI_SLUGS)[number]);
-const isIncheon = (slug: string) => INCHEON_SLUGS.includes(slug as (typeof INCHEON_SLUGS)[number]);
-const isMetro = (slug: string) => METRO_SLUGS.includes(slug as (typeof METRO_SLUGS)[number]);
-
-const SEOUL_GU = REGIONS
-    .filter((r) => !isMetro(r.slug) && !isGyeonggi(r.slug) && !isIncheon(r.slug))
-    .sort((a, b) => a.name.localeCompare(b.name, "ko"));
-
-const GYEONGGI_CITY = REGIONS
-    .filter((r) => isGyeonggi(r.slug))
-    .sort((a, b) => a.name.localeCompare(b.name, "ko"));
-
-const INCHEON_GU = REGIONS
-    .filter((r) => isIncheon(r.slug))
-    .sort((a, b) => a.name.localeCompare(b.name, "ko"));
+const METRO_ITEMS = [
+    { label: "서울", href: "/seoul" },
+    { label: "경기", href: "/gyeonggi" },
+    { label: "인천", href: "/incheon" },
+];
 
 const NAV_ITEMS = [
     { label: "관리사", href: "#therapists" },
@@ -57,103 +34,21 @@ export default function Header() {
                     SSUM<span className="text-gold">.</span>
                 </Link>
 
-                {/* Center: region menu (desktop only) */}
+                {/* Center: region menu (desktop only) — 권역 페이지로만 이동 */}
                 <nav
                     aria-label="지역 메뉴"
                     className="hidden md:flex items-center justify-center gap-6 sm:gap-8"
                 >
-                    {/* 서울 — with dropdown of 25 districts */}
-                    <div className="relative group">
+                    {METRO_ITEMS.map((item) => (
                         <Link
-                            href="/seoul"
+                            key={item.href}
+                            href={item.href}
                             className="text-on-dark/80 hover:text-white transition-colors font-medium py-2"
                             style={{ fontSize: 16, letterSpacing: "-0.01em" }}
                         >
-                            서울
+                            {item.label}
                         </Link>
-                        <div className="absolute left-1/2 top-full -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-200">
-                            <div
-                                className="rounded-xl border border-white/[0.12] bg-brand-black/95 backdrop-blur-xl p-3 shadow-2xl"
-                                style={{ minWidth: 360 }}
-                            >
-                                <ul className="grid grid-cols-3 gap-x-2 gap-y-0.5 list-none m-0 p-0">
-                                    {SEOUL_GU.map((r) => (
-                                        <li key={r.slug}>
-                                            <Link
-                                                href={`/${r.slug}`}
-                                                className="block px-3 py-2 rounded-md text-on-dark/80 hover:text-gold hover:bg-white/[0.05] transition-colors"
-                                                style={{ fontSize: 14, letterSpacing: "-0.005em" }}
-                                            >
-                                                {r.name}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* 경기 — with dropdown of cities */}
-                    <div className="relative group">
-                        <Link
-                            href="/gyeonggi"
-                            className="text-on-dark/80 hover:text-white transition-colors font-medium py-2"
-                            style={{ fontSize: 16, letterSpacing: "-0.01em" }}
-                        >
-                            경기
-                        </Link>
-                        <div className="absolute left-1/2 top-full -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-200">
-                            <div
-                                className="rounded-xl border border-white/[0.12] bg-brand-black/95 backdrop-blur-xl p-3 shadow-2xl"
-                                style={{ minWidth: 360 }}
-                            >
-                                <ul className="grid grid-cols-3 gap-x-2 gap-y-0.5 list-none m-0 p-0">
-                                    {GYEONGGI_CITY.map((r) => (
-                                        <li key={r.slug}>
-                                            <Link
-                                                href={`/${r.slug}`}
-                                                className="block px-3 py-2 rounded-md text-on-dark/80 hover:text-gold hover:bg-white/[0.05] transition-colors"
-                                                style={{ fontSize: 14, letterSpacing: "-0.005em" }}
-                                            >
-                                                {r.name}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* 인천 — with dropdown of districts */}
-                    <div className="relative group">
-                        <Link
-                            href="/incheon"
-                            className="text-on-dark/80 hover:text-white transition-colors font-medium py-2"
-                            style={{ fontSize: 16, letterSpacing: "-0.01em" }}
-                        >
-                            인천
-                        </Link>
-                        <div className="absolute left-1/2 top-full -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-200">
-                            <div
-                                className="rounded-xl border border-white/[0.12] bg-brand-black/95 backdrop-blur-xl p-3 shadow-2xl"
-                                style={{ minWidth: 360 }}
-                            >
-                                <ul className="grid grid-cols-3 gap-x-2 gap-y-0.5 list-none m-0 p-0">
-                                    {INCHEON_GU.map((r) => (
-                                        <li key={r.slug}>
-                                            <Link
-                                                href={`/${r.slug}`}
-                                                className="block px-3 py-2 rounded-md text-on-dark/80 hover:text-gold hover:bg-white/[0.05] transition-colors"
-                                                style={{ fontSize: 14, letterSpacing: "-0.005em" }}
-                                            >
-                                                {r.name}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    ))}
                 </nav>
 
                 {/* Right: anchor menu (desktop only) */}
@@ -177,7 +72,7 @@ export default function Header() {
                 <button
                     type="button"
                     onClick={() => setOpen((v) => !v)}
-                    className="md:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 text-white"
+                    className="md:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 text-white cursor-pointer"
                     aria-label={open ? "메뉴 닫기" : "메뉴 열기"}
                     aria-expanded={open}
                     aria-controls="mobile-menu"
@@ -193,80 +88,24 @@ export default function Header() {
                     className="md:hidden border-t border-white/[0.06] bg-brand-black/95 backdrop-blur-xl max-h-[calc(100vh-4rem)] overflow-y-auto"
                 >
                     <div className="mx-auto max-w-6xl px-5 py-6">
-                        {/* 지역 section */}
+                        {/* 지역 section — 권역 3개만 */}
                         <section>
                             <h3
-                                className="font-display text-gold m-0 mb-4"
+                                className="font-display text-gold m-0 mb-3"
                                 style={{ fontSize: 11, letterSpacing: "0.2em", textTransform: "uppercase" }}
                             >
                                 지역
                             </h3>
-
-                            {/* 서울 + 25개 구 */}
-                            <Link
-                                href="/seoul"
-                                onClick={close}
-                                className="block py-2 text-white font-bold"
-                                style={{ fontSize: 16, letterSpacing: "-0.01em" }}
-                            >
-                                서울
-                            </Link>
-                            <ul className="mt-2 mb-5 pl-4 grid grid-cols-3 gap-x-2 gap-y-1 list-none p-0 border-l border-white/[0.08]">
-                                {SEOUL_GU.map((r) => (
-                                    <li key={r.slug}>
+                            <ul className="list-none p-0 m-0">
+                                {METRO_ITEMS.map((item) => (
+                                    <li key={item.href}>
                                         <Link
-                                            href={`/${r.slug}`}
+                                            href={item.href}
                                             onClick={close}
-                                            className="block py-1.5 px-2 rounded text-on-dark/75 hover:text-gold transition-colors"
-                                            style={{ fontSize: 14, letterSpacing: "-0.005em" }}
+                                            className="block py-2 text-white font-bold"
+                                            style={{ fontSize: 16, letterSpacing: "-0.01em" }}
                                         >
-                                            {r.name}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-
-                            <Link
-                                href="/gyeonggi"
-                                onClick={close}
-                                className="block py-2 text-white font-bold"
-                                style={{ fontSize: 16, letterSpacing: "-0.01em" }}
-                            >
-                                경기
-                            </Link>
-                            <ul className="mt-2 mb-5 pl-4 grid grid-cols-3 gap-x-2 gap-y-1 list-none p-0 border-l border-white/[0.08]">
-                                {GYEONGGI_CITY.map((r) => (
-                                    <li key={r.slug}>
-                                        <Link
-                                            href={`/${r.slug}`}
-                                            onClick={close}
-                                            className="block py-1.5 px-2 rounded text-on-dark/75 hover:text-gold transition-colors"
-                                            style={{ fontSize: 14, letterSpacing: "-0.005em" }}
-                                        >
-                                            {r.name}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-
-                            <Link
-                                href="/incheon"
-                                onClick={close}
-                                className="block py-2 text-white font-bold"
-                                style={{ fontSize: 16, letterSpacing: "-0.01em" }}
-                            >
-                                인천
-                            </Link>
-                            <ul className="mt-2 pl-4 grid grid-cols-3 gap-x-2 gap-y-1 list-none p-0 border-l border-white/[0.08]">
-                                {INCHEON_GU.map((r) => (
-                                    <li key={r.slug}>
-                                        <Link
-                                            href={`/${r.slug}`}
-                                            onClick={close}
-                                            className="block py-1.5 px-2 rounded text-on-dark/75 hover:text-gold transition-colors"
-                                            style={{ fontSize: 14, letterSpacing: "-0.005em" }}
-                                        >
-                                            {r.name}
+                                            {item.label}
                                         </Link>
                                     </li>
                                 ))}
